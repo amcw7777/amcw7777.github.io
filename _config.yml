@@ -10,7 +10,7 @@ tagline:             'Personal Website'
 description:         "Leon's personal website about academia and life"
 url:                 http://lanyon.getpoole.com
 baseurl:             ''
-gems: [jekyll-paginate]
+# gems: [jekyll-paginate]
 paginate:            5
 paginate_path: "page:num"
 
