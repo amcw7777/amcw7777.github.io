@@ -2,7 +2,7 @@
 #
 # Use of `relative_permalinks` ensures post links from the index work properly.
 # permalink:           pretty
-# permalink: /:year-:month-:day-:title/
+permalink: https://amcw7777.github.io/:year-:month-:day-:title/
 # relative_permalinks: auto
 
 # Setup
