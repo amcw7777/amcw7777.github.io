@@ -4,7 +4,7 @@
  <title>Liang(Leon) He</title>
  <link href="http://lanyon.getpoole.com/atom.xml" rel="self"/>
  <link href="http://lanyon.getpoole.com/"/>
- <updated>2016-03-09T12:30:46-05:00</updated>
+ <updated>2016-03-10T16:44:24-05:00</updated>
  <id>http://lanyon.getpoole.com</id>
  <author>
    <name>Leon</name>
@@ -13,11 +13,52 @@
 
  
  <entry>
-   <title>test</title>
+   <title>D0(Charm) correlation</title>
    <link href="http://lanyon.getpoole.com/2016/03/08/D0Correlation/"/>
    <updated>2016-03-08T00:00:00-05:00</updated>
    <id>http://lanyon.getpoole.com/2016/03/08/D0Correlation</id>
-   <content type="html">&lt;p&gt;This is a test.&lt;/p&gt;
+   <content type="html">&lt;h2 id=&quot;jet-reconstruction&quot;&gt;Jet Reconstruction&lt;/h2&gt;
+
+&lt;h3 id=&quot;motivation&quot;&gt;Motivation&lt;/h3&gt;
+&lt;p&gt;The statistic of AuAu2014 is not enough for D-hadron correlation. The next trial is D-jet correlation. The jet reconstructed in the back of D is likely to be a c-jet. The tool in STAR right now is call ‘fastJet’. The motivation of the study in the section is:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Understand the algorithm, how to get jet from tracks.&lt;/li&gt;
+  &lt;li&gt;Implant the code to MuDst data format.&lt;/li&gt;
+  &lt;li&gt;Find best solution for c-jet. Potentially need simulation or TMVA.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;code-source-reference&quot;&gt;Code source (reference)&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;From Jan’s email: the code is located in PDSF:
+    &lt;ul&gt;
+      &lt;li&gt;analysis: /global/homes/r/rusnak/jet_analysis/STARJet/analysis&lt;/li&gt;
+      &lt;li&gt;macros for running code: /global/homes/r/rusnak/jet_analysis/STARJet/macros&lt;/li&gt;
+      &lt;li&gt;scripts for submitting jobs: /global/homes/r/rusnak/jet_analysis/STARJet/submit_scripts&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;From  &lt;a href=&quot;http://www.star.bnl.gov/cgi-bin/protected/cvsweb.cgi/StRoot/StJetMaker/&quot;&gt;StRoot StJetMaker&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Naming & Formatting Guidelines</title>
+   <link href="http://lanyon.getpoole.com/2015/07/24/formatting/"/>
+   <updated>2015-07-24T00:00:00-04:00</updated>
+   <id>http://lanyon.getpoole.com/2015/07/24/formatting</id>
+   <content type="html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;This a note of the naming and formatting guidelines for c++, phyton and markdown language. These are very commonly used languages in research.&lt;/p&gt;
+
+&lt;h3 id=&quot;c&quot;&gt;C++&lt;/h3&gt;
+&lt;p&gt;This is a note of &lt;a href=&quot;https://www.star.bnl.gov/public/comp/sofi/guidelines/formatguide.xml&quot;&gt;STAR C++ Naming &amp;amp; Formatting Guidelines&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Naming&lt;/li&gt;
+&lt;/ol&gt;
 </content>
  </entry>
  
@@ -31,11 +72,42 @@
  </entry>
  
  <entry>
-   <title>test</title>
+   <title>Vertex Finder</title>
    <link href="http://lanyon.getpoole.com/2015/04/17/vertexFinder/"/>
    <updated>2015-04-17T00:00:00-04:00</updated>
    <id>http://lanyon.getpoole.com/2015/04/17/vertexFinder</id>
-   <content type="html">&lt;p&gt;This is a test.&lt;/p&gt;
+   <content type="html">&lt;h2 id=&quot;motivation&quot;&gt;Motivation&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;To find the best vertex finder for 1)pp and 2)heavy ion events&lt;/li&gt;
+  &lt;li&gt;To understand performance of 1)KFVertex; 2)Minuit Vertex; 3)PPV&lt;/li&gt;
+  &lt;li&gt;To find a common VF for both pp and heavy ion&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;ppv&quot;&gt;PPV&lt;/h2&gt;
+&lt;p&gt;An algorithm for pp events. In the previous discussion, I know some features about PPV:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;It only fits on z direction and the x and y direction are same as beam line constraint. Although there is a &lt;a href=&quot;https://drupal.star.bnl.gov/STAR/blog/balewski/2009/may/20/upgrade-ppv-vertex-finder-3d-pp-500-beam-line-constrain-2009&quot;&gt;website&lt;/a&gt; which shows the intention to update PPV to 3D. It’s still not applied yet.&lt;/li&gt;
+  &lt;li&gt;PPV is a 1-dimensional algorithm, which only gets the vertex position event-by-event in z, based on the ASSUMPTION that the fundamental width of the beam spot (~100 um) is much better than the resolution that can be obtained by the TPC in low multiplicity events.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;improvement-of-ppv&quot;&gt;Improvement of PPV&lt;/h3&gt;
+&lt;p&gt;Dmitri is doing an improvement of PPV. The idea is to find the first PV with Minuit to minimize the chi2 and find the iptimal position for a common vertex of all tracks pointing to the initial seed. &lt;a href=&quot;https://github.com/star-bnl/star-vertex/compare/ds-ppv-fitter&quot;&gt;Source code&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;How to install
+    &lt;ol&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git clone --recursive https://github.com/star-bnl/star-vertex.git&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cd star-vertex/&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout ds-ppv-fitter&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mkdir build &amp;amp;&amp;amp; cd build&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cmake -D CMAKE_INSTALL_PREFIX=./ ../&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;make install&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Then you will find libStGenericVertexMaker.so  libStSecondaryVertexMaker.so and libStZdcVertexMaker.so. Include them when calling bfc.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Another ToolKit for vertex find in : https://github.com/star-bnl/star-vertex-eval&lt;/li&gt;
+&lt;/ol&gt;
 </content>
  </entry>
  
@@ -152,6 +224,23 @@ There are some useful relevant Ph.D theses and analysis notes which will be of g
   &lt;/li&gt;
 &lt;/ol&gt;
 
+</content>
+ </entry>
+ 
+ <entry>
+   <title>What's Jekyll?</title>
+   <link href="http://lanyon.getpoole.com/2013/12/31/whats-jekyll/"/>
+   <updated>2013-12-31T00:00:00-05:00</updated>
+   <id>http://lanyon.getpoole.com/2013/12/31/whats-jekyll</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; is a static site generator, an open-source tool for creating simple yet powerful websites of all shapes and sizes. From &lt;a href=&quot;https://github.com/mojombo/jekyll/blob/master/README.markdown&quot;&gt;the project’s readme&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Jekyll is a simple, blog aware, static site generator. It takes a template directory […] and spits out a complete, static website suitable for serving with Apache or your favorite web server. This is also the engine behind GitHub Pages, which you can use to host your project’s page or blog right here from GitHub.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It’s an immensely useful tool and one we encourage you to use here with Lanyon.&lt;/p&gt;
+
+&lt;p&gt;Find out more by &lt;a href=&quot;https://github.com/mojombo/jekyll&quot;&gt;visiting the project on GitHub&lt;/a&gt;.&lt;/p&gt;
 </content>
  </entry>
  

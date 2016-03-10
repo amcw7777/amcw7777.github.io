@@ -67,6 +67,10 @@
     
       
         
+      
+    
+      
+        
           <a class="sidebar-nav-item" href="/test/">Publication</a>
         
       
@@ -104,13 +108,58 @@
   <div class="post">
     <h1 class="post-title">
       <a href="//2016/03/08/D0Correlation/">
-        test
+        D0(Charm) correlation
       </a>
     </h1>
 
     <span class="post-date">08 Mar 2016</span>
 
-    <p>This is a test.</p>
+    <h2 id="jet-reconstruction">Jet Reconstruction</h2>
+
+<h3 id="motivation">Motivation</h3>
+<p>The statistic of AuAu2014 is not enough for D-hadron correlation. The next trial is D-jet correlation. The jet reconstructed in the back of D is likely to be a c-jet. The tool in STAR right now is call ‘fastJet’. The motivation of the study in the section is:</p>
+
+<ul>
+  <li>Understand the algorithm, how to get jet from tracks.</li>
+  <li>Implant the code to MuDst data format.</li>
+  <li>Find best solution for c-jet. Potentially need simulation or TMVA.</li>
+</ul>
+
+<h3 id="code-source-reference">Code source (reference)</h3>
+
+<ol>
+  <li>From Jan’s email: the code is located in PDSF:
+    <ul>
+      <li>analysis: /global/homes/r/rusnak/jet_analysis/STARJet/analysis</li>
+      <li>macros for running code: /global/homes/r/rusnak/jet_analysis/STARJet/macros</li>
+      <li>scripts for submitting jobs: /global/homes/r/rusnak/jet_analysis/STARJet/submit_scripts</li>
+    </ul>
+  </li>
+  <li>From  <a href="http://www.star.bnl.gov/cgi-bin/protected/cvsweb.cgi/StRoot/StJetMaker/">StRoot StJetMaker</a></li>
+</ol>
+
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="//2015/07/24/formatting/">
+        Naming & Formatting Guidelines
+      </a>
+    </h1>
+
+    <span class="post-date">24 Jul 2015</span>
+
+    <h2 id="introduction">Introduction</h2>
+
+<p>This a note of the naming and formatting guidelines for c++, phyton and markdown language. These are very commonly used languages in research.</p>
+
+<h3 id="c">C++</h3>
+<p>This is a note of <a href="https://www.star.bnl.gov/public/comp/sofi/guidelines/formatguide.xml">STAR C++ Naming &amp; Formatting Guidelines</a>.</p>
+
+<ol>
+  <li>Naming</li>
+</ol>
 
   </div>
   
@@ -130,13 +179,44 @@
   <div class="post">
     <h1 class="post-title">
       <a href="//2015/04/17/vertexFinder/">
-        test
+        Vertex Finder
       </a>
     </h1>
 
     <span class="post-date">17 Apr 2015</span>
 
-    <p>This is a test.</p>
+    <h2 id="motivation">Motivation</h2>
+<ul>
+  <li>To find the best vertex finder for 1)pp and 2)heavy ion events</li>
+  <li>To understand performance of 1)KFVertex; 2)Minuit Vertex; 3)PPV</li>
+  <li>To find a common VF for both pp and heavy ion</li>
+</ul>
+
+<h2 id="ppv">PPV</h2>
+<p>An algorithm for pp events. In the previous discussion, I know some features about PPV:</p>
+
+<ol>
+  <li>It only fits on z direction and the x and y direction are same as beam line constraint. Although there is a <a href="https://drupal.star.bnl.gov/STAR/blog/balewski/2009/may/20/upgrade-ppv-vertex-finder-3d-pp-500-beam-line-constrain-2009">website</a> which shows the intention to update PPV to 3D. It’s still not applied yet.</li>
+  <li>PPV is a 1-dimensional algorithm, which only gets the vertex position event-by-event in z, based on the ASSUMPTION that the fundamental width of the beam spot (~100 um) is much better than the resolution that can be obtained by the TPC in low multiplicity events.</li>
+</ol>
+
+<h3 id="improvement-of-ppv">Improvement of PPV</h3>
+<p>Dmitri is doing an improvement of PPV. The idea is to find the first PV with Minuit to minimize the chi2 and find the iptimal position for a common vertex of all tracks pointing to the initial seed. <a href="https://github.com/star-bnl/star-vertex/compare/ds-ppv-fitter">Source code</a></p>
+
+<ol>
+  <li>How to install
+    <ol>
+      <li><code class="highlighter-rouge">git clone --recursive https://github.com/star-bnl/star-vertex.git</code></li>
+      <li><code class="highlighter-rouge">cd star-vertex/</code></li>
+      <li><code class="highlighter-rouge">git checkout ds-ppv-fitter</code></li>
+      <li><code class="highlighter-rouge">mkdir build &amp;&amp; cd build</code></li>
+      <li><code class="highlighter-rouge">cmake -D CMAKE_INSTALL_PREFIX=./ ../</code></li>
+      <li><code class="highlighter-rouge">make install</code></li>
+      <li>Then you will find libStGenericVertexMaker.so  libStSecondaryVertexMaker.so and libStZdcVertexMaker.so. Include them when calling bfc.</li>
+    </ol>
+  </li>
+  <li>Another ToolKit for vertex find in : https://github.com/star-bnl/star-vertex-eval</li>
+</ol>
 
   </div>
   
@@ -153,122 +233,11 @@
 
   </div>
   
-  <div class="post">
-    <h1 class="post-title">
-      <a href="//2014/07/29/welcome/">
-        Welcome to STAR
-      </a>
-    </h1>
-
-    <span class="post-date">29 Jul 2014</span>
-
-    <p>Firstly comes from Mustafa. It’s a list of the things need to do to start working with group:</p>
-
-<ol>
-  <li>BNL+RCF ACCOUNTS:
-    <ol>
-      <li>Apply for a BNL <a href="http://www.bnl.gov/guv/gis.asp">Life Number</a>
-        <ul>
-          <li>Note: You will need this nuymber to proceed with the next steps</li>
-        </ul>
-      </li>
-      <li>Online <a href="http://training.bnl.gov/course/CyberSecurity/">Cyber-Security Training</a></li>
-      <li>Read + Sign + Fax(scan+email) the <a href="http://www.bnl.gov/cybersecurity/files/pdf/BNL-Computer-Use-Agreement.pdf">computer user agreement</a>
-        <ul>
-          <li>Signed Computer Use Agreements for employees and contractors are to be sent to Human Resources.  The signed forms can be sent via inter-office mail to Bonnie Miller, Building 400B. Signed forms can also be faxed to HR at 631-344-3195 or be sent via email to <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#117;&#097;&#064;&#098;&#110;&#108;&#046;&#103;&#111;&#118;">&#099;&#117;&#097;&#064;&#098;&#110;&#108;&#046;&#103;&#111;&#118;</a></li>
-          <li>In the following steps, if asked about BNL host, it is Zhangbu Xu, you might also need his number which you can find it <a href="http://www.star.bnl.gov/central/collaboration/showMember.php?id=58">here</a></li>
-        </ul>
-      </li>
-      <li>Apply for an account at BNL account <a href="http://www.bnl.gov/accounts/">here</a>
-        <ul>
-          <li>Request:</li>
-          <li>SSH Gateway Access</li>
-          <li>Unix Systems</li>
-        </ul>
-      </li>
-      <li>Apply for an RCF account <a href="https://www.racf.bnl.gov/docs/getstart/newuserform">here</a>
-        <ul>
-          <li>Group is rhstar</li>
-        </ul>
-      </li>
-      <li>After receiving all those accounts, you will also receive instructions on how to setup your ssh keys and how to access RCF grids. Please come and see if you need any help.</li>
-    </ol>
-  </li>
-  <li>PDSF Accounts:</li>
-</ol>
-
-<p>You will need this for embedding analysis (we will discuss this and relevant concepts later)
-    1.  <a href="http://newweb.nersc.gov/users/computational-systems/pdsf/getting-started/getting-a-new-user-account/">Application</a>
-    2.  <a href="http://www.nersc.gov/nusers/accounts/usage.php">Agreement</a></p>
-
-<ol>
-  <li>STAR Hypernews (mailing lists)</li>
-</ol>
-
-<p>You need to subscribe to some mailing lists to start receiving emails of talks between the collaboration members on many topics relevant to your work <a href="http://www.star.bnl.gov/HyperNews-star/index/">here</a>
-You need to subscribe to the following lists:
-*   EMC2 Sub-Systems
-*   Embedding issues and discussions
-*   Offline production
-*   PDSF at STAR
-*   PWG Light Flavor Spectra discussions
-*   STAR Operations
-*   STAR Shift Information / check forms
-*   STAR Shift Information / report
-*   STAR Talks - discussions on public presentations
-*   STARSOFT - Software issues of broad interest
-*   Simulation discussion list</p>
-
-<p>All the following steps can be done before you get the accounts above.</p>
-
-<ol>
-  <li>Operating System and ROOT</li>
-</ol>
-
-<p>You have to options for the operating system:
-    1.  Use <a href="http://www.cygwin.com/">Windows+Cygwin</a> (Which I honestly have no idea what it is, I only know this is what you need).
-    2.  Use Linux (I strongly recommend this option).
-    3.  <a href="http://root.cern.ch/drupal/content/downloading-root">ROOT</a>
-    *    Please use the Pro version.</p>
-
-<ol>
-  <li>Physics (Collection of stuff)
-    <ol>
-      <li>Please take a look at <a href="http://www.physics.purdue.edu/~wxie/HI_physics/">Wei’s introductory presentations</a></li>
-      <li>Copying from Wei’s first email to Mustafa: 
-“Another good introduction to the field is ‘Scientific American’, May 2006, page 34-43”</li>
-      <li>You can also request a Particle Physics Booklet <a href="http://pdg.lbl.gov/pdgmail/">here</a></li>
-      <li>A good source of updates on the big field of High Energy Physics is <a href="http://cerncourier.com/cws/latest/cern">CERN courier</a></li>
-    </ol>
-  </li>
-  <li>Physics (Technical)
-    <ol>
-      <li>White papers
-Tough place to start, I suggest you keep it on mind that such things exist and try to cover some parts as you get used to the field jargon.
-        <ul>
-          <li><a href="http://www.physics.purdue.edu/~wxie/HI_physics/RHIC_white_paper/STAR_white_paper.pdf">STAR</a></li>
-          <li><a href="http://www.physics.purdue.edu/~wxie/HI_physics/RHIC_white_paper/PHENIX_white_paper.pdf">PHENIX</a></li>
-        </ul>
-      </li>
-      <li>Dielectron analysis: 
-There are some useful relevant Ph.D theses and analysis notes which will be of great help. But the main theme of the analysis techniques and physics are in there following papers:
-        <ul>
-          <li><a href="http://prc.aps.org/abstract/PRC/v81/i3/e034911">PHENIX</a></li>
-          <li><a href="http://prd.aps.org/pdf/PRD/v83/i5/e052006">STAR</a></li>
-        </ul>
-      </li>
-    </ol>
-  </li>
-</ol>
-
-
-  </div>
-  
 </div>
 
 <div class="pagination">
   
-    <span class="pagination-item older">Older</span>
+    <a class="pagination-item older" href="/page2">Older</a>
   
   
     <span class="pagination-item newer">Newer</span>

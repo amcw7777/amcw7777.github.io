@@ -11,7 +11,7 @@
 
   <title>
     
-      test &middot; Liang(Leon) He
+      Vertex Finder &middot; Liang(Leon) He
     
   </title>
 
@@ -67,6 +67,10 @@
     
       
         
+      
+    
+      
+        
           <a class="sidebar-nav-item" href="/test/">Publication</a>
         
       
@@ -99,9 +103,40 @@
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">test</h1>
+  <h1 class="post-title">Vertex Finder</h1>
   <span class="post-date">17 Apr 2015</span>
-  <p>This is a test.</p>
+  <h2 id="motivation">Motivation</h2>
+<ul>
+  <li>To find the best vertex finder for 1)pp and 2)heavy ion events</li>
+  <li>To understand performance of 1)KFVertex; 2)Minuit Vertex; 3)PPV</li>
+  <li>To find a common VF for both pp and heavy ion</li>
+</ul>
+
+<h2 id="ppv">PPV</h2>
+<p>An algorithm for pp events. In the previous discussion, I know some features about PPV:</p>
+
+<ol>
+  <li>It only fits on z direction and the x and y direction are same as beam line constraint. Although there is a <a href="https://drupal.star.bnl.gov/STAR/blog/balewski/2009/may/20/upgrade-ppv-vertex-finder-3d-pp-500-beam-line-constrain-2009">website</a> which shows the intention to update PPV to 3D. It’s still not applied yet.</li>
+  <li>PPV is a 1-dimensional algorithm, which only gets the vertex position event-by-event in z, based on the ASSUMPTION that the fundamental width of the beam spot (~100 um) is much better than the resolution that can be obtained by the TPC in low multiplicity events.</li>
+</ol>
+
+<h3 id="improvement-of-ppv">Improvement of PPV</h3>
+<p>Dmitri is doing an improvement of PPV. The idea is to find the first PV with Minuit to minimize the chi2 and find the iptimal position for a common vertex of all tracks pointing to the initial seed. <a href="https://github.com/star-bnl/star-vertex/compare/ds-ppv-fitter">Source code</a></p>
+
+<ol>
+  <li>How to install
+    <ol>
+      <li><code class="highlighter-rouge">git clone --recursive https://github.com/star-bnl/star-vertex.git</code></li>
+      <li><code class="highlighter-rouge">cd star-vertex/</code></li>
+      <li><code class="highlighter-rouge">git checkout ds-ppv-fitter</code></li>
+      <li><code class="highlighter-rouge">mkdir build &amp;&amp; cd build</code></li>
+      <li><code class="highlighter-rouge">cmake -D CMAKE_INSTALL_PREFIX=./ ../</code></li>
+      <li><code class="highlighter-rouge">make install</code></li>
+      <li>Then you will find libStGenericVertexMaker.so  libStSecondaryVertexMaker.so and libStZdcVertexMaker.so. Include them when calling bfc.</li>
+    </ol>
+  </li>
+  <li>Another ToolKit for vertex find in : https://github.com/star-bnl/star-vertex-eval</li>
+</ol>
 
 </div>
 
@@ -112,8 +147,17 @@
       <li>
         <h3>
           <a href="/2016/03/08/D0Correlation/">
-            test
-            <!-- <small>08 Mar 2016</small> -->
+            D0(Charm) correlation
+            <small>08 Mar 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/07/24/formatting/">
+            Naming & Formatting Guidelines
+            <small>24 Jul 2015</small>
           </a>
         </h3>
       </li>
@@ -122,16 +166,7 @@
         <h3>
           <a href="/2015/05/17/D0CorV2/">
             test
-            <!-- <small>17 May 2015</small> -->
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2014/09/16/ppSimulation/">
-            test
-            <!-- <small>16 Sep 2014</small> -->
+            <small>17 May 2015</small>
           </a>
         </h3>
       </li>

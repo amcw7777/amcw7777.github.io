@@ -11,7 +11,7 @@
 
   <title>
     
-      test &middot; Liang(Leon) He
+      D0(Charm) correlation &middot; Liang(Leon) He
     
   </title>
 
@@ -67,6 +67,10 @@
     
       
         
+      
+    
+      
+        
           <a class="sidebar-nav-item" href="/test/">Publication</a>
         
       
@@ -99,9 +103,32 @@
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">test</h1>
+  <h1 class="post-title">D0(Charm) correlation</h1>
   <span class="post-date">08 Mar 2016</span>
-  <p>This is a test.</p>
+  <h2 id="jet-reconstruction">Jet Reconstruction</h2>
+
+<h3 id="motivation">Motivation</h3>
+<p>The statistic of AuAu2014 is not enough for D-hadron correlation. The next trial is D-jet correlation. The jet reconstructed in the back of D is likely to be a c-jet. The tool in STAR right now is call ‘fastJet’. The motivation of the study in the section is:</p>
+
+<ul>
+  <li>Understand the algorithm, how to get jet from tracks.</li>
+  <li>Implant the code to MuDst data format.</li>
+  <li>Find best solution for c-jet. Potentially need simulation or TMVA.</li>
+</ul>
+
+<h3 id="code-source-reference">Code source (reference)</h3>
+
+<ol>
+  <li>From Jan’s email: the code is located in PDSF:
+    <ul>
+      <li>analysis: /global/homes/r/rusnak/jet_analysis/STARJet/analysis</li>
+      <li>macros for running code: /global/homes/r/rusnak/jet_analysis/STARJet/macros</li>
+      <li>scripts for submitting jobs: /global/homes/r/rusnak/jet_analysis/STARJet/submit_scripts</li>
+    </ul>
+  </li>
+  <li>From  <a href="http://www.star.bnl.gov/cgi-bin/protected/cvsweb.cgi/StRoot/StJetMaker/">StRoot StJetMaker</a></li>
+</ol>
+
 
 </div>
 
@@ -111,9 +138,18 @@
     
       <li>
         <h3>
+          <a href="/2015/07/24/formatting/">
+            Naming & Formatting Guidelines
+            <small>24 Jul 2015</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <a href="/2015/05/17/D0CorV2/">
             test
-            <!-- <small>17 May 2015</small> -->
+            <small>17 May 2015</small>
           </a>
         </h3>
       </li>
@@ -121,17 +157,8 @@
       <li>
         <h3>
           <a href="/2015/04/17/vertexFinder/">
-            test
-            <!-- <small>17 Apr 2015</small> -->
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2014/09/16/ppSimulation/">
-            test
-            <!-- <small>16 Sep 2014</small> -->
+            Vertex Finder
+            <small>17 Apr 2015</small>
           </a>
         </h3>
       </li>
