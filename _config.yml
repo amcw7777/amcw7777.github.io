@@ -1,8 +1,9 @@
 # Permalinks
 #
 # Use of `relative_permalinks` ensures post links from the index work properly.
-permalink:           pretty
-# relative_permalinks: true
+# permalink:           pretty
+# permalink: /:year-:month-:day-:title/
+# relative_permalinks: auto
 
 # Setup
 title:               Liang(Leon) He
@@ -12,7 +13,7 @@ url:                 http://lanyon.getpoole.com
 baseurl:             ''
 gems: [jekyll-paginate]
 paginate:            5
-paginate_path: "page:num"
+# paginate_path: "page:num"
 
 # About/contact
 author:
