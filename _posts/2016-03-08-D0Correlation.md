@@ -36,12 +36,12 @@ Save information of selected tracks (in TLorentzVector) to `trackContainer`. Nee
 
     1.  The input vector is defined as `std::vector<fastjet::PseudoJet> input_vector;`. 
     2.  Then initialized the input vector by the container `input_vector = make_charged_input_vector(containerdata, pTmin, pTmax);`
-    3.  Two questions marked here: 1) how to load fastjet lib; 2) is `make_charged_input_vector` in STAR lib?
+    3.  Two questions marked here: 1) how to load fastjet lib; 2) is `make_charged_input_vector` in STAR lib? Maybe `#include "jet.h"`
 
 3.  Jet reconstruction
 
     1.  Use data structure `FJWrapper akt_data;`. 
-    2.  Initialize FJWrapper: 
+    2.  Initialize FJWrapper: need `#include "fjwrapper.h"`
     ```c+++
     akt_data.r = r;//double r = atof(gSystem->Getenv("RPARAM"));
     akt_data.maxrap = max_rap-r;//Float_t max_rap = atoi(gSystem->Getenv("MAXRAP"));
@@ -49,6 +49,5 @@ Save information of selected tracks (in TLorentzVector) to `trackContainer`. Nee
     akt_data.input_particles = input_vector;
     ```
     3.  Start to reconstruct `akt_data.Run()`
-    4.  Open question: how to load FJWrapper?
 
 4.  Find jets: `std::vector<fastjet::PseudoJet> jets = akt_data.inclusive_jets;`
